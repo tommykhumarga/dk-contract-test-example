@@ -1,0 +1,104 @@
+{
+  "consumer": {
+    "name": "nest-contract-test-example"
+  },
+  "interactions": [
+    {
+      "description": "Create customer",
+      "providerState": "bad request",
+      "request": {
+        "body": {
+          "email": "johndoe@example.com",
+          "firstName": "John"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body.email": {
+            "match": "type"
+          },
+          "$.body.firstName": {
+            "match": "type"
+          }
+        },
+        "method": "POST",
+        "path": "/customer"
+      },
+      "response": {
+        "body": {
+          "message": "Bad request"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body.message": {
+            "match": "type"
+          }
+        },
+        "status": 400
+      }
+    },
+    {
+      "description": "Create customer",
+      "providerState": "normal",
+      "request": {
+        "body": {
+          "email": "johndoe@example.com",
+          "firstName": "John",
+          "lastName": "Doe"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body.email": {
+            "match": "type"
+          },
+          "$.body.firstName": {
+            "match": "type"
+          },
+          "$.body.lastName": {
+            "match": "type"
+          }
+        },
+        "method": "POST",
+        "path": "/customer"
+      },
+      "response": {
+        "body": {
+          "email": "johndoe@example.com",
+          "name": "John Doe"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body.email": {
+            "match": "type"
+          },
+          "$.body.name": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "10.4.1"
+    },
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "kotlin-contract-test-example"
+  }
+}
